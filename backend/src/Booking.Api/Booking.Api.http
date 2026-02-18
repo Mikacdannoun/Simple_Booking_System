@@ -1,0 +1,54 @@
+@host = http://localhost:5220
+
+POST {{host}}/api/resources
+Content-Type: application/json
+
+{
+  "name" : "Projectors",
+  "quantity" : 3
+}
+
+###
+GET {{host}}/api/resources
+
+###
+GET {{host}}/api/bookings/1
+
+###
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "resourceId": 1,
+  "dateFrom": "2026-02-01T10:00:00",
+  "dateTo": "2026-02-01T12:00:00",
+  "bookedQuantity": 2
+}
+
+###
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "resourceId": 1,
+  "dateFrom": "2026-02-20T09:00:00",
+  "dateTo": "2026-02-20T11:00:00",
+  "bookedQuantity": 3
+}
+
+###
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "resourceId": 1,
+  "dateFrom": "2026-02-20T10:00:00",
+  "dateTo": "2026-02-20T12:00:00",
+  "bookedQuantity": 2
+}
+
+###
+GET {{host}}/api/resources/1/availability?dateFrom=2026-02-20T09:00:00&dateTo=2026-02-20T11:00:00
+
+###
+DELETE {{host}}/api/bookings/5
